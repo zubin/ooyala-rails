@@ -1,0 +1,9 @@
+<% unless @loaded_ooyala_js.include?(player_id) %>
+<script src="http://player.ooyala.com/v3/<%= player_id %>"></script>
+<% end %>
+<div class="ooyala-player" id="<%= div_id %>"></div>
+<script type="text/javascript" charset="utf-8">
+  OO.ready(function() {
+    window.player = OO.Player.create('<%= div_id %>', '<%= embed_code %>', <%= options.to_json %>);
+  });
+</script>
