@@ -26,9 +26,10 @@ module Ooyala
       end
 
       def duration
-        return unless duration_in_seconds
-        mins = (duration_in_seconds / 60.0).floor
-        secs = duration_in_seconds % 60
+        return unless duration_in_ms
+        total_seconds = duration_in_ms / 1_000.0
+        mins = (total_seconds / 60.0).floor
+        secs = (total_seconds % 60).ceil
         '%s:%s' % [mins, secs]
       end
 
@@ -48,7 +49,7 @@ module Ooyala
         end
       end
 
-      def duration_in_seconds
+      def duration_in_ms
         data['duration'] if data
       end
     end
