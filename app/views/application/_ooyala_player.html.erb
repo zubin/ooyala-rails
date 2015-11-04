@@ -4,6 +4,6 @@
 <div class="ooyala-player" id="<%= div_id %>"></div>
 <script type="text/javascript" charset="utf-8">
   OO.ready(function() {
-    window.player = OO.Player.create('<%= div_id %>', '<%= embed_code %>', <%= options.to_json %>);
+    window.player = OO.Player.create('<%= div_id %>', '<%= embed_code %>', <%= raw options.to_json %>);
   });
 </script>
