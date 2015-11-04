@@ -1,13 +1,22 @@
+require 'ooyala-v2-api'
 require 'ooyala/rails/version'
 
 module Ooyala
   module Rails
+    def self.api
+      @api ||= Ooyala::API.new(config.api_key, config.secret_key)
+    end
+
     def self.config
       @config ||= Config.new
     end
 
     def self.configure
       yield config
+    end
+
+    def self.configured?
+      config.api_key.present?
     end
 
     class Config
