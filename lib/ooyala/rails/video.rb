@@ -19,6 +19,12 @@ module Ooyala
         @api ||= Ooyala::API.new(config.api_key, config.secret_key)
       end
 
+      def self.all
+        api.get('assets').fetch('items').map do |item|
+          new(item['embed_code'])
+        end
+      end
+
       def self.find(embed_code)
         new(embed_code).tap do |video|
           raise NotFound unless video.exists?
