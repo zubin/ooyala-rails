@@ -1,4 +1,19 @@
 module OoyalaHelper
+  # Renders Ooyala player with jQuery plugin: https://www.npmjs.com/package/jquery-ooyala
+  def jquery_ooyala_player(embed_code,
+                           div_id: embed_code,
+                           player_id: default_ooyala_player_id,
+                           options: default_ooyala_player_options)
+    content_tag(:div,
+                '',
+                id: div_id,
+                class: 'oo-player',
+                data: {
+                  player_id: player_id,
+                  content_id: embed_code,
+                })
+  end
+
   # Generates Ooyala player JS
   def ooyala_js(player_id: default_ooyala_player_id)
     javascript_include_tag "//player.ooyala.com/v3/#{player_id}"

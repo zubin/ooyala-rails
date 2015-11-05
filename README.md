@@ -1,6 +1,6 @@
 # Ooyala::Rails
 
-Integrates Ooyala with Rails
+Integrates [Ooyala](http://www.ooyala.com/) with Rails
 
 ## Installation
 
@@ -30,7 +30,11 @@ Ideally, use ENV variables instead of storing your credentials in version contro
 
 ## Usage
 
-First, render the JS:
+There are two modes of use:
+
+### 1. Standard
+
+1. Render the JS:
 
 ```erb
 <!-- using configured player_id -->
@@ -40,7 +44,7 @@ First, render the JS:
 <%= ooyala_js player_id: 'PLAYER_ID_GOES_HERE' %>
 ```
 
-Next, render your player(s):
+2. Render the player(s):
 
 ```erb
 <!-- using configured player_id and default player options -->
@@ -50,8 +54,30 @@ Next, render your player(s):
 <%= ooyala_player 'your_embed_code', player_id: 'PLAYER_ID_GOES_HERE', options: {autoplay: true} %>
 ```
 
+### 2. Using jQuery
+
+1. Add the [jquery-ooyala](https://www.npmjs.com/package/jquery-ooyala) library to `application.js`:
+
+```javascript
+//= require jquery-ooyala
+```
+
+2. Render the players using the same arguments as with standard but using a different method:
+
+```erb
+<!-- using configured player_id and default player options -->
+<%= jquery_ooyala_player 'your_embed_code' %>
+
+<!-- specifying player_id and player options  -->
+<%= jquery_ooyala_player 'your_embed_code', player_id: 'PLAYER_ID_GOES_HERE', options: {autoplay: true} %>
+```
+
+See [jquery-ooyala](https://www.npmjs.com/package/jquery-ooyala) documentation more functionality.
+
+## CSS
+
 The generated container `<div>` will require some basic CSS, eg:
 
 ```css
-div.ooyala-player { width:480px; height:360px; }
+.oo-player { width:480px; height:360px; }
 ```
