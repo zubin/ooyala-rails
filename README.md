@@ -30,25 +30,25 @@ Ideally, use ENV variables instead of storing your credentials in version contro
 
 ## Usage
 
-To render a player:
+First, render the JS:
 
-    ```erb
-    <%= ooyala_player 'your_embed_code' %>
-    ```
+```erb
+<!-- using configured player_id -->
+<%= ooyala_js %>
 
-This only works when `player_id` is configured.
+<!-- specifying player_id -->
+<%= ooyala_js player_id: 'PLAYER_ID_GOES_HERE' %>
+```
 
-To specify `player_id`:
+Next, render your player(s):
 
-    ```erb
-    <%= ooyala_player 'your_embed_code', player_id: 'PLAYER_ID_GOES_HERE' %>
-    ```
+```erb
+<!-- using configured player_id and default player options -->
+<%= ooyala_player 'your_embed_code' %>
 
-To add/override player options:
-
-    ```erb
-    <%= ooyala_player 'your_embed_code', options: {autoplay: true} %>
-    ```
+<!-- specifying player_id and player options  -->
+<%= ooyala_player 'your_embed_code', player_id: 'PLAYER_ID_GOES_HERE', options: {autoplay: true} %>
+```
 
 The generated container `<div>` will require some basic CSS, eg:
 
