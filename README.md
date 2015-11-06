@@ -4,10 +4,14 @@ Integrates [Ooyala](http://www.ooyala.com/) with Rails
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the following to your application's Gemfile:
 
 ```ruby
 gem 'ooyala-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery-ooyala'
+end
 ```
 
 And then execute:
