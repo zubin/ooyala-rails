@@ -11,6 +11,7 @@ module OoyalaHelper
                 data: {
                   player_id: player_id,
                   content_id: embed_code,
+                  player_params: options,
                 })
   end
 
